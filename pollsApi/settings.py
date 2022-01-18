@@ -29,7 +29,7 @@ SECRET_KEY = '^-xpt1&+5x*eo&k6!!8&&k83s73%o$n6=7!i_m8k&e=2%j^(4&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,9 +119,13 @@ WSGI_APPLICATION = 'pollsApi.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+      "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "d7vuqt5vrfqn5d",
+        "USER": "flxwskbloneqwu",
+        "PASSWORD": "bc508709258db91aec0f85c99fb282afeba58131374d0166ea1e43fb6e6ed312",
+        "HOST": "ec2-54-229-47-120.eu-west-1.compute.amazonaws.com",
+        "PORT": 5432,
     }
 }
 
