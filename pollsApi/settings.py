@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 from django.conf import settings
@@ -18,7 +18,6 @@ from django.conf import settings
 from apps import polls
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -30,7 +29,6 @@ SECRET_KEY = '^-xpt1&+5x*eo&k6!!8&&k83s73%o$n6=7!i_m8k&e=2%j^(4&'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -114,21 +112,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pollsApi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-      "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "d7vuqt5vrfqn5d",
-        "USER": "flxwskbloneqwu",
-        "PASSWORD": "bc508709258db91aec0f85c99fb282afeba58131374d0166ea1e43fb6e6ed312",
-        "HOST": "ec2-54-229-47-120.eu-west-1.compute.amazonaws.com",
-        "PORT": 5432,
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -148,7 +144,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -161,7 +156,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
