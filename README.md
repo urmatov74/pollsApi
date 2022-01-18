@@ -1,2 +1,2 @@
 # pollsApi
-API of poll system for Codify test assessment
+API of poll system
